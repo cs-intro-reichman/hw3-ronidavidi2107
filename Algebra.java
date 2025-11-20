@@ -87,57 +87,63 @@ public class Algebra {
 		}
 		
 	public static int div(int x1, int x2) {
-		if (x1 ==x2) {
-			return 1;
-		}
-		if (x1 <x2) {
-			return 0;
-		}
-		int start= 0;
-		int nam= x2;
-		int finish = x1;
-		int result= 0;
-		if (x1 > x2) {
-		while (result + nam <= finish) {
-			start++;
-			result= times(nam, start);
-			
-		} 
-	}
-	return start;
+    if (x2 == 0) {
+        System.out.println("Error: Division by zero is undefined.");
+        return 0; 
+    }
+    
+    if (x1 == 0) return 0;
+    
+    boolean negativeResult = (x1 < 0 && x2 >= 0) || (x1 >= 0 && x2 < 0);
+    
+    int finish = x1; 
+    if (x1 < 0) finish = minus(0, x1);
+    
+    int nam = x2; 
+    if (x2 < 0) nam = minus(0, x2);
+    
+    int start = 0;
+    int result = 0;
+
+    while (result <= finish) {
+        if (times(nam, plus(start, 1)) > finish) {
+            break; 
+        }
+        start = plus(start, 1);
+        result = times(nam, start);
+    }   if (negativeResult) {
+        return minus(0, start); 
+    }
+    return start;
+}
+	
 	 
 
-	}  
-
 	public static int mod(int x1, int x2) {
-		if ( x1 ==x2) {
-			return 0;
-		} 
-		if (x2 > x1) {
-			return x1;
-		} 
-		if (x2 < x1) {
-			int div = div(x1, x2);
-        return x1 - times(x2, div);
-		}
-	    return 0;
+		if (x2 == 0) {
+        System.out.println("Error: Modulo by zero is undefined.");
+        return 0; 
+    }
+    
+    if (x1 == 0) return 0;
+    
+    int divResult = div(x1, x2);
+    int subtraction = times(x2, divResult);
+    
+    return minus(x1, subtraction);
 	}	
 
 	public static int sqrt(int x) {
-		if (x<= 0) {
-			return 0;
-		}
-		int i = 1;
-		int result = 1;
-			while (result <= x) {
-				if (result == x) {
-					return i;
-				}
-				i++;
-				result = times(i, i);
 
-				}
-
-		return i;
-	}	  	  
+    if (x < 0) throw new IllegalArgumentException("Negative input for sqrt");
+    if (x == 0 || x == 1) return x;
+    int i = 1; 
+    while (times(i, i) <= x) {
+        if (times(i, i) == x) {
+            return i;
+        }
+        i = plus(i, 1);
+    }
+    return minus(i, 1);
+	}	  	 
 }
