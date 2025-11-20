@@ -42,6 +42,9 @@ public class LoanCalc {
 		payment = payment + epsilon;
 		iterationCounter ++;	
 		}
+		if (iterationCounter > 0) {
+        iterationCounter--; 
+    }
 		return payment;
     }
     

@@ -36,35 +36,24 @@ public class Algebra {
 	}
 
 	public static int minus(int x1, int x2) {
-		int Result = x1;
-	    int Counter = x2;
-		if ( Result > 0) {}
-	    if (Counter > 0) {
-		   while (Counter > 0) {
-			Result --;
-			Counter --;
-		   }
-		} else {
-			while (Counter < 0) {
-			Result --;
-			Counter ++;	
-			}
-		} 
-		if ( Result <0) {
-		while (Counter > 0) {
-			Result ++;
-			Counter ++;
-		   }
-		} else {
-			while (Counter < 0) {
-			Result --;
-			Counter --;	
-			}	
-		}
+    int result = x1;
+    int counter = x2;
 
-		return Result;
-	}
+    if (counter > 0) {
+        while (counter > 0) {
+            result--; 
+            counter--;
+        }
+    } 
+    else if (counter < 0) {
+        while (counter < 0) {
+            result++; 
+            counter++;
+        }
+    }
 
+    return result;
+}
 	
 	public static int times(int x1, int x2) {
 		int Result = 0;

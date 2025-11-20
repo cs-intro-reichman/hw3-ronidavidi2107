@@ -53,11 +53,11 @@ public class Anagram {
 	   
 	public static String preProcess(String str) {
 		String lowstr = str.toLowerCase();
-		String result = " ";
+		String result = "";
 		for ( int i =0; i < lowstr.length(); i ++) {
 			char c =lowstr.charAt(i);
 			if ( c >= 'a' && c <= 'z') {
-				result = result + 'c';
+				result = result + c;
 
 			}
 		}
